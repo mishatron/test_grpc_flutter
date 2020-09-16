@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+package countries;
+
+//option go_package = "countries";
+option java_multiple_files = true;
+option java_package = "mobi.asta.test_grpc.countries";
+option java_outer_classname = "CountriesProto";
+option objc_class_prefix = "HLW";
+
+import "google/api/annotations.proto";
+
+// Сервис gRPC для получения информации по странам.
+service Countries {
+
+  // запрос на получение списка стран
+  rpc List(Request.Country.List) returns (Response.Country.List) {
+    option (google.api.http) = {
+      get: "/countries"
+    };
+  }
+
+  // запрос на лайк или дислайк конкретной страны с возможностью потоковой отсылки новых лайков
+  // и дислайков для разных стран
+  rpc LikeDislike(stream Request.Country.LikeDislike) returns (Response.Country.Single) {
+    option (google.api.http) = {
+      post: "/countries"
+      body: "*"
+    };
+  }
+
+  // запрос на потоковое получение текущей страны
+  rpc Single(Request.Country.Single) returns (stream Response.Country.Single) {
+    option (google.api.http) = {
+      get: "/countries/{id}"
+    };
+  }
+}
+
+// namespace ответов
+message Response {
+
+  // namespace ответов по стране
+  message Country {
+
+    // данные по одной стране
+    message Single {
+      uint32 id = 1; // id страны
+      string name = 2; // имя страны
+      int32 likes = 3; // количество лайков
+    }
+
+    // данные по нескольким странам
+    message List {
+      repeated Response.Country.Single countries = 1; // страны
+    }
+  }
+}
+
+// namesapce запросов
+message Request {
+
+  // namespace запросов для стран
+  message Country {
+
+    // параметры запроса списка стран
+    message List {
+      uint32 offset = 1;  // отступ в количестве стран, с которого необходимо начать возвращать результат
+      uint32 limit = 2; // количеств стран, которое необходимо вернуть
+    }
+
+    // параметры запроса лайка страны
+    message Like {
+      uint32 id = 1; // id страны
+    }
+
+    // параметры запроса дислайка страны
+    message Dislike {
+      uint32 id = 1; // id страны
+    }
+
+    // параметры запроса для лайка или дислайка страны
+    message LikeDislike {
+      oneof action {  // лайк или дислайк
+        Like like = 1;
+        Dislike dislike = 2;
+      }
+    }
+
+    message Single {
+      uint32 id = 1; // id страны
+    }
+  }
+}
