@@ -29,8 +29,39 @@ class _CountryDetailsScreenState extends State<CountryDetailsScreen> {
                 builder: (context, snapshot) {
                   if (snapshot.error != null) return Text(snapshot.error);
                   if (snapshot.data == null) return CircularProgressIndicator();
-                  return CountryItem(
-                    data: snapshot.data,
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      CountryItem(
+                        data: snapshot.data,
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.thumb_up,
+                              color: Colors.green,
+                            ),
+                            onPressed: () {
+                              CountriesService.likeCountry(countryId);
+                            },
+                          ),
+                          SizedBox(
+                            width: 16,
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.thumb_down,
+                              color: Colors.green,
+                            ),
+                            onPressed: () {
+                              CountriesService.dislikeCountry(countryId);
+                            },
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      )
+                    ],
                   );
                 },
               ),
