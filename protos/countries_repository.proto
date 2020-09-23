@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package countries;
+
+option go_package = "countries";
+
+service CountriesRepository {
+  rpc Single(CountriesRepositoryRequest.Country.Single) returns (CountriesRepositoryResponse.Country.Single) {}
+
+  rpc List(CountriesRepositoryRequest.Country.List) returns (CountriesRepositoryResponse.Country.List) {}
+
+  rpc Like(CountriesRepositoryRequest.Country.Like) returns (CountriesRepositoryResponse.Country.Single) {}
+
+  rpc Dislike(CountriesRepositoryRequest.Country.Dislike) returns (CountriesRepositoryResponse.Country.Single) {}
+}
+
+message CountriesRepositoryResponse {
+
+  message Country {
+
+    message Single {
+      uint32 id = 1;
+      string name = 2;
+      int32 likes = 3;
+    }
+
+    message List {
+      message Meta {
+        uint32 offset = 1;
+        uint32 limit = 2;
+      }
+      Meta meta = 1;
+      repeated CountriesRepositoryResponse.Country.Single countries = 2;
+    }
+  }
+}
+
+message CountriesRepositoryRequest {
+
+  message Country {
+
+    message List {
+      uint32 offset = 1;
+      uint32 limit = 2;
+    }
+
+    message Like {
+      uint32 id = 1;
+    }
+
+    message Dislike {
+      uint32 id = 1;
+    }
+
+    message Single {
+      uint32 id = 1;
+    }
+  }
+}

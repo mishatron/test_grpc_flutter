@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package countries;
+
+option go_package = "countries";
+
+import "proto/shared.proto";
+
+service CountriesCommandDispatcher {
+  rpc Dispatch(CountriesCommandDispatcherRequest.Country.Single) returns (Empty) {}
+}
+
+message CountriesCommandDispatcherRequest {
+  message Country {
+    message Single {
+      uint32 id = 1;
+      string name = 2;
+      int32 likes = 3;
+    }
+  }
+}

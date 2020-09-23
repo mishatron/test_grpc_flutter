@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package countries;
+
+option go_package = "countries";
+
+message Empty {}
+
+message Country {
+  uint32 id = 1;
+  string name = 2;
+  int32 likes = 3;
+}
+
+message PaginationMeta {
+  uint32 offset = 1;
+  uint32 limit = 2;
+}
+
+message CountryPagination {
+    PaginationMeta meta = 1;
+    repeated Country countries = 2;
+}

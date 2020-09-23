@@ -2,13 +2,10 @@ syntax = "proto3";
 
 package countries;
 
-//option go_package = "countries";
-option java_multiple_files = true;
-option java_package = "mobi.asta.test_grpc.countries";
-option java_outer_classname = "CountriesProto";
-option objc_class_prefix = "HLW";
+option go_package = "countries";
 
 import "google/api/annotations.proto";
+import "proto/shared.proto";
 
 // Сервис gRPC для получения информации по странам.
 service Countries {
@@ -35,6 +32,8 @@ service Countries {
       get: "/countries/{id}"
     };
   }
+
+  rpc Echo(EchoMessage) returns (EchoMessage) {};
 }
 
 // namespace ответов
@@ -53,8 +52,40 @@ message Response {
     // данные по нескольким странам
     message List {
       repeated Response.Country.Single countries = 1; // страны
+      PaginationMeta meta = 2;
     }
   }
+}
+
+message EchoMessage {
+  message Inner1 {
+    message Inner2 {
+      message Inner3 {
+        message Inner4 {
+          message Inner5 {
+            message Inner6 {
+              message Inner7 {
+                message Inner8 {
+                  message Inner9 {
+                    string text = 1;
+                  }
+                  Inner9 inner = 1;
+                }
+                Inner8 inner = 1;
+              }
+              Inner7 inner = 1;
+            }
+            Inner6 inner = 1;
+          }
+          Inner5 inner = 1;
+        }
+        Inner4 inner = 1;
+      }
+      Inner3 inner = 1;
+    }
+    Inner2 inner = 1;
+  }
+  Inner1 inner = 1;
 }
 
 // namesapce запросов

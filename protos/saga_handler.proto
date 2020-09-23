@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package countries;
+
+option go_package = "countries";
+
+import "proto/shared.proto";
+
+service GetCountrySaga {
+  rpc GetCountry(CountrySagaRequest) returns (CountrySagaResponse) {}
+}
+
+service LikeCountrySaga {
+  rpc LikeCountry(CountrySagaRequest) returns (CountrySagaResponse) {}
+}
+
+service DislikeCountrySaga {
+  rpc DislikeCountry(CountrySagaRequest) returns (CountrySagaResponse) {}
+}
+
+service CountriesSaga {
+  rpc List(CountryListSagaRequest) returns (CountryListSagaResponse) {}
+}
+
+message CountrySagaRequest {
+  uint32 countryId = 1;
+}
+
+message CountrySagaResponse {
+  Country country = 1;
+}
+
+message CountryListSagaRequest {
+  PaginationMeta meta = 1;
+}
+
+message CountryListSagaResponse {
+  CountryPagination list = 1;
+}
