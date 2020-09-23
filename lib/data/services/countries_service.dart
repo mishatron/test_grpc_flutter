@@ -14,6 +14,31 @@ class CountriesService {
     return await client.list(req);
   }
 
+  static Future<EchoMessage> sendEcho() async {
+    var client = CountriesClient(GrpcClientSingleton().client);
+    var msg9 = EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8_Inner9();
+    var msg8 = EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8();
+    var msg7 = EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7();
+    var msg6 = EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6();
+    var msg5 = EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5();
+    var msg4 = EchoMessage_Inner1_Inner2_Inner3_Inner4();
+    var msg3 = EchoMessage_Inner1_Inner2_Inner3();
+    var msg2 = EchoMessage_Inner1_Inner2();
+    var msg1 = EchoMessage_Inner1();
+    var msg = EchoMessage();
+
+    msg8.inner=msg9;
+    msg7.inner=msg8;
+    msg6.inner=msg7;
+    msg5.inner=msg6;
+    msg4.inner=msg5;
+    msg3.inner=msg4;
+    msg2.inner=msg3;
+    msg1.inner=msg2;
+    msg.inner=msg1;
+    return await client.echo(msg);
+  }
+
   static ResponseStream<Response_Country_Single> getCountry(int id) {
     var client = CountriesClient(GrpcClientSingleton().client);
     var req = Request_Country_Single();
@@ -38,7 +63,7 @@ class CountriesService {
     var req = Request_Country_LikeDislike();
     req.dislike = Request_Country_Dislike()..id = id;
     StreamController<Request_Country_LikeDislike> _dislikeStreamController =
-    StreamController();
+        StreamController();
     _dislikeStreamController.add(req);
     var result = await client.likeDislike(_dislikeStreamController.stream);
     _dislikeStreamController.close();

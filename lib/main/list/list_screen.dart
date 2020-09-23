@@ -29,6 +29,14 @@ class _ListScreenState extends State<ListScreen> {
     });
   }
 
+  void _countriesEcho() async{
+    CountriesService.sendEcho().then((value) {
+      print(value);
+    }).catchError((err) {
+      print(err);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,9 +70,17 @@ class _ListScreenState extends State<ListScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: RaisedButton(
-              child: Text("Load countries"),
-              onPressed: _getCountriesList,
+            child: Row(
+              children: [
+                RaisedButton(
+                  child: Text("Countries echo"),
+                  onPressed: _countriesEcho,
+                ),
+                RaisedButton(
+                  child: Text("Load countries"),
+                  onPressed: _getCountriesList,
+                ),
+              ],
             ),
           )
         ],
