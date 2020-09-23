@@ -28,6 +28,86 @@ const Response_Country_List$json = const {
   '1': 'List',
   '2': const [
     const {'1': 'countries', '3': 1, '4': 3, '5': 11, '6': '.countries.Response.Country.Single', '10': 'countries'},
+    const {'1': 'meta', '3': 2, '4': 1, '5': 11, '6': '.countries.PaginationMeta', '10': 'meta'},
+  ],
+};
+
+const EchoMessage$json = const {
+  '1': 'EchoMessage',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1$json],
+};
+
+const EchoMessage_Inner1$json = const {
+  '1': 'Inner1',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2$json],
+};
+
+const EchoMessage_Inner1_Inner2$json = const {
+  '1': 'Inner2',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3$json = const {
+  '1': 'Inner3',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4$json = const {
+  '1': 'Inner4',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4.Inner5', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5$json = const {
+  '1': 'Inner5',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4.Inner5.Inner6', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6$json = const {
+  '1': 'Inner6',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4.Inner5.Inner6.Inner7', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7$json = const {
+  '1': 'Inner7',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4.Inner5.Inner6.Inner7.Inner8', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8$json = const {
+  '1': 'Inner8',
+  '2': const [
+    const {'1': 'inner', '3': 1, '4': 1, '5': 11, '6': '.countries.EchoMessage.Inner1.Inner2.Inner3.Inner4.Inner5.Inner6.Inner7.Inner8.Inner9', '10': 'inner'},
+  ],
+  '3': const [EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8_Inner9$json],
+};
+
+const EchoMessage_Inner1_Inner2_Inner3_Inner4_Inner5_Inner6_Inner7_Inner8_Inner9$json = const {
+  '1': 'Inner9',
+  '2': const [
+    const {'1': 'text', '3': 1, '4': 1, '5': 9, '10': 'text'},
   ],
 };
 

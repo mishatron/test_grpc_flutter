@@ -32,6 +32,10 @@ class CountriesClient extends $grpc.Client {
           ($0.Request_Country_Single value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.Response_Country_Single.fromBuffer(value));
+  static final _$echo = $grpc.ClientMethod<$0.EchoMessage, $0.EchoMessage>(
+      '/countries.Countries/Echo',
+      ($0.EchoMessage value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.EchoMessage.fromBuffer(value));
 
   CountriesClient($grpc.ClientChannel channel, {$grpc.CallOptions options})
       : super(channel, options: options);
@@ -57,6 +61,13 @@ class CountriesClient extends $grpc.Client {
     final call = $createCall(_$single, $async.Stream.fromIterable([request]),
         options: options);
     return $grpc.ResponseStream(call);
+  }
+
+  $grpc.ResponseFuture<$0.EchoMessage> echo($0.EchoMessage request,
+      {$grpc.CallOptions options}) {
+    final call = $createCall(_$echo, $async.Stream.fromIterable([request]),
+        options: options);
+    return $grpc.ResponseFuture(call);
   }
 }
 
@@ -91,6 +102,13 @@ abstract class CountriesServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) =>
             $0.Request_Country_Single.fromBuffer(value),
         ($0.Response_Country_Single value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.EchoMessage, $0.EchoMessage>(
+        'Echo',
+        echo_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.EchoMessage.fromBuffer(value),
+        ($0.EchoMessage value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.Response_Country_List> list_Pre($grpc.ServiceCall call,
@@ -103,10 +121,17 @@ abstract class CountriesServiceBase extends $grpc.Service {
     yield* single(call, await request);
   }
 
+  $async.Future<$0.EchoMessage> echo_Pre(
+      $grpc.ServiceCall call, $async.Future<$0.EchoMessage> request) async {
+    return echo(call, await request);
+  }
+
   $async.Future<$0.Response_Country_List> list(
       $grpc.ServiceCall call, $0.Request_Country_List request);
   $async.Future<$0.Response_Country_Single> likeDislike($grpc.ServiceCall call,
       $async.Stream<$0.Request_Country_LikeDislike> request);
   $async.Stream<$0.Response_Country_Single> single(
       $grpc.ServiceCall call, $0.Request_Country_Single request);
+  $async.Future<$0.EchoMessage> echo(
+      $grpc.ServiceCall call, $0.EchoMessage request);
 }

@@ -2,10 +2,13 @@ syntax = "proto3";
 
 package countries;
 
-option go_package = "countries";
+option java_multiple_files = true;
+option java_package = "mobi.asta.test_grpc.countries";
+option java_outer_classname = "CountriesProto";
+option objc_class_prefix = "HLW";
 
 import "google/api/annotations.proto";
-import "proto/shared.proto";
+import "shared.proto";
 
 // Сервис gRPC для получения информации по странам.
 service Countries {

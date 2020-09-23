@@ -4,7 +4,7 @@ package countries;
 
 option go_package = "countries";
 
-import "proto/shared.proto";
+import "shared.proto";
 
 service GetCountrySaga {
   rpc GetCountry(CountrySagaRequest) returns (CountrySagaResponse) {}
